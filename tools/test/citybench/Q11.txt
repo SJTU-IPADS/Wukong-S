@@ -1,0 +1,13 @@
+REGISTER QUERY citybench_Q11 AS
+
+SELECT ?obId1 ?v1 ?p1
+FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusWeatherData0> 
+[ RANGE 3s STEP 1s ] 
+
+WHERE {
+
+?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusWeatherData0> <-S
+?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p1 ->S
+?obId1 <http://purl.oclc.org/NET/sao/hasValue> ?v1 ->S
+
+}

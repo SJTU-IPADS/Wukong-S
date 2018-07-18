@@ -1,0 +1,42 @@
+REGISTER QUERY citybench_Q10 AS
+
+SELECT ?obId1 ?obId2 ?obId3 ?obId4 ?obId5 
+       ?v1 ?v2 ?v3 ?v4 ?v5
+FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData182955> 
+[ RANGE 3s STEP 1s ] 
+FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData158505> 
+[ RANGE 3s STEP 1s ] 
+FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData206502> 
+[ RANGE 3s STEP 1s ] 
+FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData179093> 
+[ RANGE 3s STEP 1s ] 
+FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData195843> 
+[ RANGE 3s STEP 1s ] 
+
+WHERE {
+
+?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData182955> <-S
+?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p1 ->S
+?obId1 <http://purl.oclc.org/NET/sao/hasValue> ?v1 ->S
+
+
+?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData158505> <-S
+?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p2 ->S
+?obId2 <http://purl.oclc.org/NET/sao/hasValue> ?v2 ->S
+
+
+?obId3 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData206502> <-S
+?obId3 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p3 ->S
+?obId3 <http://purl.oclc.org/NET/sao/hasValue> ?v3 ->S
+
+
+?obId4 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData179093> <-S
+?obId4 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p4 ->S
+?obId4 <http://purl.oclc.org/NET/sao/hasValue> ?v4 ->S
+
+
+?obId5 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData195843> <-S
+?obId5 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p5 ->S
+?obId5 <http://purl.oclc.org/NET/sao/hasValue> ?v5 ->S
+
+}

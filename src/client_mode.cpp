@@ -96,14 +96,6 @@ void display_help(client* clnt){
 	}
 }
 
-extern void simulate_trinity_q1(client* clnt);
-extern void simulate_trinity_q2(client* clnt);
-extern void simulate_trinity_q3(client* clnt);
-extern void simulate_trinity_q4(client* clnt);
-extern void simulate_trinity_q5(client* clnt);
-extern void simulate_trinity_q6(client* clnt);
-extern void simulate_trinity_q7(client* clnt);
-
 
 void iterative_shell(client* clnt){
 	//ClientBarrier(clnt->cfg);
@@ -139,20 +131,6 @@ void iterative_shell(client* clnt){
 
 		if(input_str=="help"){
 			display_help(clnt);
-		} else if(input_str=="trinity_q1"){
-			simulate_trinity_q1(clnt);
-		} else if(input_str=="trinity_q2"){
-			simulate_trinity_q2(clnt);
-		} else if(input_str=="trinity_q3"){
-			simulate_trinity_q3(clnt);
-		} else if(input_str=="trinity_q4"){
-			simulate_trinity_q4(clnt);
-		} else if(input_str=="trinity_q5"){
-			simulate_trinity_q5(clnt);
-		} else if(input_str=="trinity_q6"){
-			simulate_trinity_q6(clnt);
-		} else if(input_str=="trinity_q7"){
-			simulate_trinity_q7(clnt);
 		} else if(input_str=="reconfig"){
 			if(cfg->t_id==0){
 				load_changeable_cfg();

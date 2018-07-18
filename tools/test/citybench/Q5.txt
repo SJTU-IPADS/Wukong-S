@@ -1,0 +1,25 @@
+REGISTER QUERY citybench_Q5 AS
+
+SELECT ?evtId  ?title  ?obId2  ?lat2 ?lon2
+
+FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData158505> [ RANGE 3s STEP 1s ]
+
+WHERE {
+
+?evtId <http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest> <http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest> <-T
+?evtId <http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest> ?foi ->T
+?foi <http://www.insight-centre.org/citytraffic#hasFirstNode> ?node ->T 
+?node <http://www.insight-centre.org/citytraffic#hasLatitude> ?lat1 ->T
+?node <http://www.insight-centre.org/citytraffic#hasLongitude> ?lon1 ->T
+?evtId <http://purl.oclc.org/NET/sao/value> ?title ->T
+
+
+?p2   a <http://www.insight-centre.org/citytraffic#CongestionLevel> <-T
+?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p2 <-S
+?obId2 <http://purl.oclc.org/NET/sao/hasValue> ?v2 ->S
+?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData158505> ->S
+?p2   <http://purl.oclc.org/NET/ssnx/ssn#isPropertyOf> ?foi2 ->T
+?foi2 <http://www.insight-centre.org/citytraffic#hasStartLatitude> ?lat2 ->T
+?foi2 <http://www.insight-centre.org/citytraffic#hasStartLongitude> ?lon2 ->T
+
+}

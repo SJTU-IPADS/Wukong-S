@@ -1,0 +1,24 @@
+REGISTER QUERY citybench_Q4 AS
+
+SELECT ?evtId ?title ?node ?obId2 ?lat2 ?lon2 ?lat1 ?lon1
+
+FROM <http://www.insight-centre.org/dataset/SampleEventService#UserLocationService> [ RANGE 3s STEP 1s ] 
+
+where {
+
+?evtId <http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest> <http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest> <-T
+?evtId <http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest> ?foi ->T
+?foi <http://www.insight-centre.org/citytraffic#hasFirstNode> ?node ->T
+?node <http://www.insight-centre.org/citytraffic#hasLatitude> ?lat1 ->T
+?node <http://www.insight-centre.org/citytraffic#hasLongitude> ?lon1 ->T
+?evtId <http://purl.oclc.org/NET/sao/value> ?title ->T
+
+
+?obId2 a <http://purl.oclc.org/NET/ssnx/ssn#Observation> <-S
+?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p2 ->S
+?obId2 <http://purl.oclc.org/NET/sao/hasValue> ?v2 ->S
+?v2 <http://www.insight-centre.org/citytraffic#hasLatitude> ?lat2 ->S
+?v2 <http://www.insight-centre.org/citytraffic#hasLongitude> ?lon2 ->S
+?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#UserLocationService> ->S
+
+} 

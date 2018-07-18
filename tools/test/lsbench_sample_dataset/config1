@@ -1,0 +1,9 @@
+0 100 poststream stream_rdfPostStream.nt
+0 100 postlikestream stream_rdfPostLikeStream8000.nt
+0 100 photostream stream_rdfPhotoStream.nt
+0 100 photolikestream stream_rdfPhotoLikeStream.nt
+0 100 gpsstream stream_gpsStream.nt
+
+
+
+

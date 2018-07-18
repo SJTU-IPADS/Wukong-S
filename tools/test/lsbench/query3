@@ -1,0 +1,12 @@
+REGISTER QUERY query3_group_friend_post AS
+
+SELECT ?friend ?post
+FROM poststream
+[ RANGE 1s STEP 200ms ]
+
+WHERE
+{
+  ?user sioc:account_of sibp:p864 <-T
+  ?user foaf:knows ?friend ->T
+  ?friend sioc:creator_of ?post ->S
+}

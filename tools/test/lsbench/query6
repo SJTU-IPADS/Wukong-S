@@ -1,0 +1,16 @@
+REGISTER QUERY query6_post_complex AS
+
+SELECT ?user ?friend ?post ?channel
+FROM poststream
+[ RANGE 600ms STEP 200ms ]
+FROM postlikestream
+[ RANGE 600ms STEP 200ms ]
+
+WHERE
+{
+  sioc:container_of sioc:container_of ?post ->S
+  ?channel sioc:container_of ?post <-S
+  ?user sioc:subscriber_of ?channel <-T
+  ?user foaf:knows ?friend ->T
+  ?friend sib:like ?post <-S
+}

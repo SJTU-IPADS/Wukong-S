@@ -1,0 +1,32 @@
+REGISTER QUERY citybench_Q9 AS
+
+SELECT ?eventId ?foi ?lat1 ?lon1 ?obId1 ?obId2 ?v1 ?v2 
+
+FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusParkingDataKALKVAERKSVEJ> 
+[ RANGE 3s STEP 1s ] 
+FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusParkingDataSKOLEBAKKEN> 
+[ RANGE 3s STEP 1s ] 
+
+WHERE {
+
+?evtId <http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest> <http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest> <-T
+?evtId <http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest> ?foi ->T
+?foi <http://www.insight-centre.org/citytraffic#hasFirstNode> ?node ->T
+?node <http://www.insight-centre.org/citytraffic#hasLatitude> ?lat1 ->T
+?node <http://www.insight-centre.org/citytraffic#hasLongitude> ?lon1 ->T
+?evtId <http://purl.oclc.org/NET/sao/value> ?title ->T
+
+
+?p1   a <http://www.insight-centre.org/citytraffic#ParkingVacancy> <-T
+?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p1 <-S
+?obId1 <http://purl.oclc.org/NET/sao/hasValue> ?v1 ->S
+?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusParkingDataKALKVAERKSVEJ> ->S
+
+
+?p2   a <http://www.insight-centre.org/citytraffic#ParkingVacancy> <-T
+?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p2 <-S
+?obId2 <http://purl.oclc.org/NET/sao/hasValue> ?v2 ->S
+?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusParkingDataSKOLEBAKKEN> ->S
+
+
+}

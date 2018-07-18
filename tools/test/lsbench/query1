@@ -1,0 +1,12 @@
+REGISTER QUERY query1_single_user_actions AS
+
+SELECT ?p ?o
+FROM poststream
+[ RANGE 1s STEP 200ms ]
+FROM gpsstream
+[ RANGE 1s STEP 200ms ]
+
+WHERE
+{
+  sibu:u864 ?p ?o ->S
+}

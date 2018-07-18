@@ -1,0 +1,14 @@
+REGISTER QUERY query4_posts_same_tag AS
+
+SELECT ?post1 ?post2 ?tag
+FROM poststream
+[ RANGE 1s STEP 1s ]
+
+WHERE
+{
+  ?user sioc:creator_of sioc:creator_of <-S
+  ?user sioc:creator_of ?post1 ->S
+  ?user sioc:creator_of ?post2 ->S
+  ?post1 sib:hashtag ?tag ->S
+  ?post2 sib:hashtag ?tag ->S
+}

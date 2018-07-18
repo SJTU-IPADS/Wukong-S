@@ -1,0 +1,33 @@
+REGISTER QUERY citybench_Q2 AS
+
+SELECT ?obId1 ?obId2 ?obId3 ?obId4 ?v1 ?v2 ?v3 ?v4
+
+ FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusWeatherData0> [ RANGE 3s STEP 1s ] 
+ FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData158505> [ RANGE 3s STEP 1s ]
+ 
+where {
+
+?p1   a <http://www.insight-centre.org/citytraffic#Temperature> <-T
+?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p1 <-S
+?obId1 <http://purl.oclc.org/NET/sao/hasValue> ?v1 ->S
+?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusWeatherData0> ->S
+
+
+?p2   a <http://www.insight-centre.org/citytraffic#Humidity> <-T
+?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p2 <-S
+?obId2 <http://purl.oclc.org/NET/sao/hasValue> ?v2 ->S
+?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusWeatherData0> ->S
+
+
+?p3   a <http://www.insight-centre.org/citytraffic#WindSpeed> <-T
+?obId3 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p3 <-S
+?obId3 <http://purl.oclc.org/NET/sao/hasValue> ?v3 ->S
+?obId3 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusWeatherData0> ->S
+
+
+?p4   a <http://www.insight-centre.org/citytraffic#CongestionLevel> <-T
+?obId4 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p4 <-S
+?obId4 <http://purl.oclc.org/NET/sao/hasValue> ?v4 ->S
+?obId4 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData158505> ->S
+
+}

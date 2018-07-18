@@ -1,0 +1,20 @@
+REGISTER QUERY citybench_Q3 AS
+
+SELECT ?obId1  ?obId3  ?v1  ?v3
+FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData182955> [ RANGE 3s STEP 1s ] 
+FROM <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData158505> [ RANGE 3s STEP 1s ] 
+
+where {
+
+?p1   a <http://www.insight-centre.org/citytraffic#EstimatedTime> <-T
+?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p1 <-S
+?obId1 <http://purl.oclc.org/NET/sao/hasValue> ?v1 ->S
+?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData182955> ->S
+
+
+?p3   a <http://www.insight-centre.org/citytraffic#EstimatedTime> <-T
+?obId3 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p3 <-S
+?obId3 <http://purl.oclc.org/NET/sao/hasValue> ?v3 ->S
+?obId3 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData158505> ->S
+
+}

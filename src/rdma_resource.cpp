@@ -9,7 +9,7 @@
 #ifndef USE_ZEROMQ
 
 struct config_t rdma_config = {
-  "mlx4_0",                         /* dev_name */
+  "mlx5_0",                         /* dev_name */
   NULL,                         /* server_name */
   19875,                        /* tcp_port */
   1,                            /* ib_port */
